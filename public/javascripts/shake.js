@@ -9,11 +9,11 @@ function onDeviceReady() {
 	var bound = 5;						//* 阈值
 
 	debug.innerHTML = 'DeviceReady';
-		
+			
 	//* 成功获取加速度
 	function onSuccess(reading) {
 		var changes = {};	//* 记录当前加速度变化值
-		if(previousReading.x !== null){		
+		if(previousReading.x != null){		
 			changes.x = Math.abs(previousReading.x - reading.x);
 			changes.y = Math.abs(previousReading.y - reading.y);
 			changes.z = Math.abs(previousReading.z - reading.z);		
@@ -47,12 +47,6 @@ function onDeviceReady() {
 	}
 
 	//* 开启周期性监听加速度				
-	function startWatch(onSuccess, onError) {
-		previousReading = {x: null, y: null, z: null};
-		debug.innerHTML = 'ready';
-		watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
-		debug.innerHTML = 'start';
-	}
-
-	startWatch(onSuccess, onError);
+	watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+	debug.innerHTML = 'start';
 }
