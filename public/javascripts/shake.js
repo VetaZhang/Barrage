@@ -48,8 +48,7 @@ function onDeviceReady() {
 		debug.innerHTML = 'error';
 	}
 
-	navigator.accelerometer.getCurrentAcceleration(
-		function(reading){
+	navigator.accelerometer.getCurrentAcceleration(function(reading){
 			document.getElementById('debug_0').innerHTML = 'current get';
 		}, function() {
 			document.getElementById('debug_0').innerHTML = 'current false';
@@ -57,6 +56,7 @@ function onDeviceReady() {
 	);
 
 	//* 开启周期性监听加速度
-	watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
-	debug.innerHTML = 'start';
+	/*watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+	debug.innerHTML = 'start';*/
+	debug.innerHTML = typeof(navigator.accelerometer.watchAcceleration(onSuccess, onError, options));
 }
