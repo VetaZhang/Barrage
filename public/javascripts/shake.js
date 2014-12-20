@@ -1,15 +1,18 @@
 document.addEventListener("deviceready", onDeviceReady);
 
-
 function onDeviceReady() {
 	var debug = document.getElementById('debug');
 	var options = { frequency: 300 };	//* 监听周期
 	var watchID = null;					//* watchID 将作为 watchAcceleration 方法的返回值
 	var previousReading = { x: null, y: null, z: null}	//* 保存前一次读取到的加速度数据值
 	var bound = 5;						//* 阈值
-
-	debug.innerHTML = 'DeviceReady';
 			
+	//* 开启周期性监听加速度
+	function startWatch() {
+		watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+		debug.innerHTML = 'start';
+	}
+
 	//* 成功获取加速度
 	function onSuccess(reading) {
 		var changes = {};	//* 记录当前加速度变化值
@@ -46,7 +49,5 @@ function onDeviceReady() {
 		debug.innerHTML = 'error';
 	}
 
-	//* 开启周期性监听加速度				
-	watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
-	debug.innerHTML = 'start';
+	debug.innerHTML = 'DeviceReady';
 }
