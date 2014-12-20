@@ -1,17 +1,20 @@
-document.addEventListener("deviceready", onDeviceReady, false);
+document.addEventListener("deviceready", onDeviceReady);
 
-var debug = document.getElementById('debug');
-function onDeviceReady() {	debug.innerHTML = 'DeviceReady';
+
+function onDeviceReady() {
+	var debug = document.getElementById('debug');
 	var options = { frequency: 300 };	//* 监听周期
 	var watchID = null;					//* watchID 将作为 watchAcceleration 方法的返回值
 	var previousReading = { x: null, y: null, z: null}	//* 保存前一次读取到的加速度数据值
 	var bound = 5;						//* 阈值
+
+	debug.innerHTML = 'DeviceReady';
 	
 	//* 开启周期性监听加速度				
 	function startWatch() {
 		previousReading = {x: null, y: null, z: null};
 		watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
-		debug.innerHTML = 'start';
+		debug.innerHTML = onSuccess+onError+options;
 	}
 		
 	//* 成功获取加速度
@@ -26,16 +29,16 @@ function onDeviceReady() {	debug.innerHTML = 'DeviceReady';
 		
 		//* 判断是否满足摇晃操作的条件			
 		if(changes.x>bound || changes.y>bound || changes.z>bound){
-			$('img[id^="img"]').css('display', 'none');
+			$('div[id^="img"]').css('display', 'none');
 			var power = Math.pow(changes.x,2)+
 									Math.pow(changes.y,2)+
 									Math.pow(changes.z,2);
 			power = Math.round(Math.sqrt(power));
-			if(power<100) {
+			if(power<10) {
 				$('#img_1').css('display', 'inline');
-			}else if(power<200) {
+			}else if(power<15) {
 				$('#img_2').css('display', 'inline');
-			}else if(power<300) {
+			}else if(power<20) {
 				$('#img_3').css('display', 'inline');
 			}else {
 				$('#img_4').css('display', 'inline');

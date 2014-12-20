@@ -7,10 +7,15 @@ body {
 	color: #eee;
 }
 
-img[id^="img"] {
+div[id^="img"] {
 	width: 100%;
 	height: 350px;
 	display: none;
+}
+
+img {
+	width: 100%;
+	height: auto;
 }
 
 #img_1 {

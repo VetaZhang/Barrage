@@ -1,0 +1,11 @@
+{
+    "name": "软件嘉年华",
+    "developer": {
+        "name": "Veta",
+        "url": ""
+    },
+    "icons": {
+        "128": "http://www.duanpengfei.com:3000/images/icon.png"
+    },
+    "launch_url": "http://www.duanpengfei.com:3000"
+}
