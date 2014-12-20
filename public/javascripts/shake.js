@@ -6,12 +6,8 @@ function onDeviceReady() {
 	var watchID = null;					//* watchID 将作为 watchAcceleration 方法的返回值
 	var previousReading = { x: null, y: null, z: null}	//* 保存前一次读取到的加速度数据值
 	var bound = 5;						//* 阈值
-			
-	//* 开启周期性监听加速度
-	function startWatch() {
-		watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
-		debug.innerHTML = 'start';
-	}
+
+	debug.innerHTML = 'DeviceReady';
 
 	//* 成功获取加速度
 	function onSuccess(reading) {
@@ -20,6 +16,9 @@ function onDeviceReady() {
 			changes.x = Math.abs(previousReading.x - reading.x);
 			changes.y = Math.abs(previousReading.y - reading.y);
 			changes.z = Math.abs(previousReading.z - reading.z);		
+		}
+		else {
+			previousReading = { x: reading.x, y: reading.y, z: reading.z};
 		}
 		debug.innerHTML = 'x:'+reading.x+' y:'+reading.y+' z:'+reading.z;
 		
@@ -49,5 +48,15 @@ function onDeviceReady() {
 		debug.innerHTML = 'error';
 	}
 
-	debug.innerHTML = 'DeviceReady';
+	navigator.accelerometer.getCurrentAcceleration(
+		function(reading){
+			document.getElementById('debug_0').innerHTML = 'current get';
+		}, function() {
+			document.getElementById('debug_0').innerHTML = 'current false';
+		}
+	);
+
+	//* 开启周期性监听加速度
+	watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+	debug.innerHTML = 'start';
 }
