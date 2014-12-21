@@ -13,6 +13,7 @@ function deviceMotionHandler(eventData) {
 }
 
 function handler() {
+	document.getElementById('debug0').innerHTML = 'handler';
 	var changes = {};	//* 记录当前加速度变化值
 	if(previous.x != null){
 		changes.x = Math.abs(previous.x - current.x);
@@ -44,7 +45,6 @@ function handler() {
 if (window.DeviceMotionEvent) {
 	window.addEventListener('devicemotion',deviceMotionHandler, false);
 	var loop = setInterval("handler()", 300);
-	document.getElementById('debug0').innerHTML = loop;
 }
 else {
 	debug.innerHTML = '您的手机不支持加速度感应额～';
