@@ -2,19 +2,20 @@
 //socket = io.connect("http://www.duanpengfei.com:3000/");
 
 var current = { x: null, y: null, z: null };
-var bound = 3;
-var debug = document.getElementById('debug');
+var bound = 5;
+var debug = $('#debug');
+var debug0 = $('#debug0');
 
 function handler() {
 	var power = current.x + current.y + current.z;
-	document.getElementById('debug0').innerHTML = power;
+	debug0.innerHTML = power;
 	$('div[id^="img"]').css('display', 'none');
 	
-	if(power<5) {
+	if(power<10) {
 		$('#img_1').css('display', 'inline');
-	}else if(power<10) {
+	}else if(power<20) {
 		$('#img_2').css('display', 'inline');
-	}else if(power<15) {
+	}else if(power<30) {
 		$('#img_3').css('display', 'inline');
 	}else {
 		$('#img_4').css('display', 'inline');
