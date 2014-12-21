@@ -1,6 +1,6 @@
 
-socket = io.connect("/");
-socket.emit('shake', previous);
+//socket = io.connect("http://www.duanpengfei.com:3000/");
+
 var previous = { x: null, y: null, z: null };
 var current = { x: null, y: null, z: null };
 var bound = 2;
@@ -25,9 +25,9 @@ function handler() {
 		previous = current;
 		return;
 	}
-	socket.emit('shake', previous);
+	//socket.emit('shake', previous);
 	document.getElementById('debug0').innerHTML = 
-		'x:' + changes.x + ' y:' + changes.y + ' z:' + changes.z;
+		'x:' + previous.x + ' y:' + previous.y + ' z:' + previous.z;
 
 	if(changes.x>bound || changes.y>bound || changes.z>bound){
 		$('div[id^="img"]').css('display', 'none');
