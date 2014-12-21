@@ -34,7 +34,7 @@ $(document).ready(function() {
 			handler();
 		}
 		else {
-			debug0.html('power: ' + current.x + current.y + current.z);
+			debug0.html('power: < ' + bound);
 			$('div[id^="img"]').css('display', 'none');
 			$('#img_1').css('display', 'inline');
 		}
