@@ -11,7 +11,7 @@ $(document).ready(function() {
 		var power = current.x + current.y + current.z;
 		debug0.html('power: '+power);
 		$('div[id^="img"]').css('display', 'none');
-		
+		socket.emit('shake', power);
 		if(power<10) {
 			$('#img_1').css('display', 'inline');
 		}else if(power<20) {
