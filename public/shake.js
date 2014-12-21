@@ -12,6 +12,7 @@ function start(callback) {
 
 	socket.on('give', function(data) {
 		people = data;
+		console.log(people);
 	});
 
 	setInterval('socket.emit("get")', 1000);
