@@ -10,7 +10,7 @@
   </body>
 <script type="text/javascript" src="socket.io/socket.io.js"></script>
 <script type="text/javascript">
-  socket = io.connect("http://www.duanpengfei.com:3000/");
+  socket = io.connect("/");
   socket.on('shake', function(data) {
     console.log('x:' + data.x + ' y:' + data.y + ' z:' + data.z);
   });

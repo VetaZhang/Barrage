@@ -15,7 +15,7 @@ div[id^="img"] {
 
 img {
 	width: 100%;
-	height: 100%;
+	height: auto%;
 }
 
 #img_1 {

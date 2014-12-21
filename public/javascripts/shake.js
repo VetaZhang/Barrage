@@ -1,5 +1,5 @@
 
-//socket = io.connect("http://www.duanpengfei.com:3000/");
+socket = io.connect("/");
 
 var current = { x: null, y: null, z: null };
 var bound = 5;
@@ -8,7 +8,7 @@ var debug0 = $('#debug0');
 
 function handler() {
 	var power = current.x + current.y + current.z;
-	debug0.html('power: 'power);
+	debug0.html('power: '+power);
 	$('div[id^="img"]').css('display', 'none');
 	
 	if(power<10) {
