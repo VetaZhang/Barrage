@@ -1,54 +1,39 @@
 
 //socket = io.connect("http://www.duanpengfei.com:3000/");
 
-var previous = { x: null, y: null, z: null };
 var current = { x: null, y: null, z: null };
-var bound = 2;
+var bound = 3;
 var debug = document.getElementById('debug');
+
+function handler() {
+	var power = current.x + current.y + current.z;
+	document.getElementById('debug0').innerHTML = power;
+	$('div[id^="img"]').css('display', 'none');
+	
+	if(power<5) {
+		$('#img_1').css('display', 'inline');
+	}else if(power<10) {
+		$('#img_2').css('display', 'inline');
+	}else if(power<15) {
+		$('#img_3').css('display', 'inline');
+	}else {
+		$('#img_4').css('display', 'inline');
+	}
+}
 
 function deviceMotionHandler(eventData) {
 	var acceleration = eventData.acceleration;
-	current.x = Math.round(acceleration.x);
-	current.y = Math.round(acceleration.y);
-	current.z = Math.round(acceleration.z);
+	current.x = Math.abs(Math.round(acceleration.x));
+	current.y = Math.abs(Math.round(acceleration.y));
+	current.z = Math.abs(Math.round(acceleration.z));
 	debug.innerHTML = 'x:' + current.x + ' y:' + current.y + ' z:' + current.z;
-}
-
-function handler() {
-	var changes = {};	//* 记录当前加速度变化值
-	if(previous.x != null){
-		changes.x = Math.abs(previous.x - current.x);
-		changes.y = Math.abs(previous.y - current.y);
-		changes.z = Math.abs(previous.z - current.z);
+	if(current.x>bound || current.y>bound || current.z>bound) {
+		handler();
 	}
-	else {
-		previous = current;
-		return;
-	}
-	//socket.emit('shake', previous);
-	document.getElementById('debug0').innerHTML = 
-		'x:' + previous.x + ' y:' + previous.y + ' z:' + previous.z;
-
-	if(changes.x>bound || changes.y>bound || changes.z>bound){
-		$('div[id^="img"]').css('display', 'none');
-		var power = changes.x + changes.y + changes.z;
-		document.getElementById('debug0').innerHTML = power;
-		if(power<4) {
-			$('#img_1').css('display', 'inline');
-		}else if(power<6) {
-			$('#img_2').css('display', 'inline');
-		}else if(power<8) {
-			$('#img_3').css('display', 'inline');
-		}else {
-			$('#img_4').css('display', 'inline');
-		}
-	}
-	previous = current;
 }
 
 if (window.DeviceMotionEvent) {
 	window.addEventListener('devicemotion',deviceMotionHandler, false);
-	var loop = setInterval("handler()", 300);
 }
 else {
 	debug.innerHTML = '您的手机不支持加速度感应额～';
