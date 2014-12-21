@@ -9,7 +9,7 @@ function start(callback) {
 		var d = new Date();
 		return parseInt(d.getTime());
 	}
-	
+
 	var t1 = date();
 	var t2 = 0;
 
@@ -27,11 +27,11 @@ function start(callback) {
 	socket.on('shake', function(data) {
 		if(people < 2) return;
 		sum += data;
-		if(sum >= (people-1)*300) {
+		if(sum >= (people-1)*250) {
 			sum = 0;
-			t2 = date();console.log(t1+'and'+t2+'and'+(t2-t1));
+			t2 = date();
 			var speed = t2-t1;
-			if(speed>2000) speed = 2000;
+			if(speed>1800) speed = 1800;
 			else if(speed<500) speed = 500;
 			t1 = t2;
 			callback(speed, people-1);
