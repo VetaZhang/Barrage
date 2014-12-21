@@ -5,17 +5,17 @@ function start(callback) {
 	var sum = 0;
 	var people = 1;
 
-	socket.on('connect', function(data) {
-		socket.emit('get', '');
+	socket.on('connect', function() {
+		socket.emit('get');
 		console.log('connect');
 	});
 
 	socket.on('give', function(data) {
 		people = data;
-		console.log(people);
+		console.log('people: ' + people);
 	});
 
-	setInterval('socket.emit("get", "")', 1000);
+	setInterval('socket.emit("get")', 1000);
 
 	socket.on('shake', function(data) {
 		if(people < 2) return;
