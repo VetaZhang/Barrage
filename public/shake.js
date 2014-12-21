@@ -6,7 +6,7 @@ function start(callback) {
 	var people = 1;
 
 	socket.on('connect', function(data) {
-		socket.emit('get');
+		socket.emit('get', '');
 		console.log('connect');
 	});
 
@@ -15,7 +15,7 @@ function start(callback) {
 		console.log(people);
 	});
 
-	setInterval('socket.emit("get")', 1000);
+	setInterval('socket.emit("get", "")', 1000);
 
 	socket.on('shake', function(data) {
 		if(people < 2) return;

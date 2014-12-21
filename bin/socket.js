@@ -12,7 +12,7 @@ module.exports = function(server) {
 			});
 
 			client.on('get', function(data) {
-				io.emit('give', people);
+				client.emit('give', people);
 			});
 			
 			client.on('shake', function(data) {
