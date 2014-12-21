@@ -1,7 +1,7 @@
 
 var previous = { x: null, y: null, z: null };
 var current = { x: null, y: null, z: null };
-var bound = 5;
+var bound = 2;
 var debug = document.getElementById('debug');
 
 function deviceMotionHandler(eventData) {
@@ -27,11 +27,12 @@ function handler() {
 	if(changes.x>bound || changes.y>bound || changes.z>bound){
 		$('div[id^="img"]').css('display', 'none');
 		var power = changes.x + changes.y + changes.z;
-		if(power<10) {
+		document.getElementById('debug0').innerHTML = power;
+		if(power<4) {
 			$('#img_1').css('display', 'inline');
-		}else if(power<15) {
+		}else if(power<6) {
 			$('#img_2').css('display', 'inline');
-		}else if(power<20) {
+		}else if(power<8) {
 			$('#img_3').css('display', 'inline');
 		}else {
 			$('#img_4').css('display', 'inline');
