@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1"/>
+  </head>
+  <body>
+    
+  </body>
+<script type="text/javascript" src="socket.io/socket.io.js"></script>
+<script type="text/javascript">
+  socket = io.connect("/");
+  socket.on('shake', function(data) {
+    console.log('x:' + data.x + ' y:' + data.y + ' z:' + data.z);
+  });
+</script>
+</html>
