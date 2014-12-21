@@ -27,7 +27,7 @@ function start(callback) {
 	socket.on('shake', function(data) {
 		if(people < 2) return;
 		sum += data;
-		if(sum >= (people-1)*280) {
+		if(sum >= (people-1)*400) {
 			sum = 0;
 			t2 = date();
 			var speed = t2-t1;
