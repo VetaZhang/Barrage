@@ -1,4 +1,56 @@
-document.addEventListener("deviceready", onDeviceReady);
+
+var previous = { x: null, y: null, z: null };
+var current = { x: null, y: null, z: null };
+var bound = 5;
+var debug = document.getElementById('debug');
+
+function deviceMotionHandler(eventData) {
+	var acceleration = eventData.acceleration;
+	current.x = Math.round(acceleration.x);
+	current.y = Math.round(acceleration.y);
+	current.z = Math.round(acceleration.z);
+	debug.innerHTML = 'x:' + current.x + ' y:' + current.y + ' z:' + current.z;
+}
+
+function handler() {
+	var changes = {};	//* 记录当前加速度变化值
+	if(previous.x != null){
+		changes.x = Math.abs(previous.x - current.x);
+		changes.y = Math.abs(previous.y - current.y);
+		changes.z = Math.abs(previous.z - current.z);
+	}
+	else {
+		previous = { x: current.x, y: current.y, z: current.z };
+		return;
+	}
+
+	if(changes.x>bound || changes.y>bound || changes.z>bound){
+		$('div[id^="img"]').css('display', 'none');
+		var power = changes.x + changes.y + changes.z;
+		if(power<10) {
+			$('#img_1').css('display', 'inline');
+		}else if(power<15) {
+			$('#img_2').css('display', 'inline');
+		}else if(power<20) {
+			$('#img_3').css('display', 'inline');
+		}else {
+			$('#img_4').css('display', 'inline');
+		}
+	}
+	previous = { x: current.x, y: current.y, z: current.z};
+}
+
+if (window.DeviceMotionEvent) {
+	window.addEventListener('devicemotion',deviceMotionHandler, false);
+	var loop = setInterval('handler()', 300);
+}
+else {
+	debug.innerHTML = '您的手机不支持加速度感应额～';
+}
+
+
+
+/*document.addEventListener("deviceready", onDeviceReady);
 
 function onDeviceReady() {
 	var debug = document.getElementById('debug');
@@ -56,7 +108,7 @@ function onDeviceReady() {
 	);
 
 	//* 开启周期性监听加速度
-	/*watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
-	debug.innerHTML = 'start';*/
+	watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+	debug.innerHTML = 'start';
 	debug.innerHTML = typeof(navigator.accelerometer.watchAcceleration(onSuccess, onError, options));
-}
+}*/
