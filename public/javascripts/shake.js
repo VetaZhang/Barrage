@@ -8,7 +8,7 @@ var debug0 = $('#debug0');
 
 function handler() {
 	var power = current.x + current.y + current.z;
-	debug0.innerHTML = power;
+	debug0.html('power: 'power);
 	$('div[id^="img"]').css('display', 'none');
 	
 	if(power<10) {
@@ -27,9 +27,13 @@ function deviceMotionHandler(eventData) {
 	current.x = Math.abs(Math.round(acceleration.x));
 	current.y = Math.abs(Math.round(acceleration.y));
 	current.z = Math.abs(Math.round(acceleration.z));
-	debug.innerHTML = 'x:' + current.x + ' y:' + current.y + ' z:' + current.z;
+	debug.html('x:' + current.x + ' y:' + current.y + ' z:' + current.z);
 	if(current.x>bound || current.y>bound || current.z>bound) {
 		handler();
+	}
+	else {
+		$('div[id^="img"]').css('display', 'none');
+		$('#img_1').css('display', 'inline');
 	}
 }
 
