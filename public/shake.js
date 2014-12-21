@@ -12,7 +12,6 @@ function start(callback) {
 
 	socket.on('give', function(data) {
 		people = data;
-		console.log('people: ' + people);
 	});
 
 	setInterval('socket.emit("get")', 1000);
@@ -20,7 +19,7 @@ function start(callback) {
 	socket.on('shake', function(data) {
 		if(people < 2) return;
 		sum += data;
-		if(sum >= (people-1)*200) {
+		if(sum >= (people-1)*300) {
 			sum = 0;
 			callback(people-1);
 		}
