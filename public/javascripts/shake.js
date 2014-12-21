@@ -29,10 +29,12 @@ $(document).ready(function() {
 		current.y = Math.abs(Math.round(acceleration.y));
 		current.z = Math.abs(Math.round(acceleration.z));
 		debug.html('x:' + current.x + ' y:' + current.y + ' z:' + current.z);
+
 		if(current.x>bound || current.y>bound || current.z>bound) {
 			handler();
 		}
 		else {
+			debug0.html('power: ' + current.x + current.y + current.z);
 			$('div[id^="img"]').css('display', 'none');
 			$('#img_1').css('display', 'inline');
 		}
