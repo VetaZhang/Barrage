@@ -13,7 +13,6 @@ function deviceMotionHandler(eventData) {
 }
 
 function handler() {
-	document.getElementById('debug0').innerHTML = 'handler';
 	var changes = {};	//* 记录当前加速度变化值
 	if(previous.x != null){
 		changes.x = Math.abs(previous.x - current.x);
@@ -24,6 +23,8 @@ function handler() {
 		previous = current;
 		return;
 	}
+	document.getElementById('debug0').innerHTML = 
+		'x:' + changes.x + ' y:' + changes.y + ' z:' + changes.z;
 
 	if(changes.x>bound || changes.y>bound || changes.z>bound){
 		$('div[id^="img"]').css('display', 'none');
