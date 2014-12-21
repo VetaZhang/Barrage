@@ -20,7 +20,7 @@ function handler() {
 		changes.z = Math.abs(previous.z - current.z);
 	}
 	else {
-		previous = { x: current.x, y: current.y, z: current.z };
+		previous = current;
 		return;
 	}
 
@@ -38,12 +38,12 @@ function handler() {
 			$('#img_4').css('display', 'inline');
 		}
 	}
-	previous = { x: current.x, y: current.y, z: current.z};
+	previous = current;
 }
 
 if (window.DeviceMotionEvent) {
 	window.addEventListener('devicemotion',deviceMotionHandler, false);
-	var loop = setInterval('handler()', 300);
+	var loop = setInterval(handler, 300);
 }
 else {
 	debug.innerHTML = '您的手机不支持加速度感应额～';
