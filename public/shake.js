@@ -4,7 +4,13 @@ function start(callback) {
 
 	var sum = 0;
 	var people = 1;
-	var t1 = parseInt(Date().getTime());
+
+	function date() {
+		var d = new Date();
+		return parseInt(d.getTime());
+	}
+	
+	var t1 = date();
 	var t2 = 0;
 
 	socket.on('connect', function() {
@@ -23,7 +29,7 @@ function start(callback) {
 		sum += data;
 		if(sum >= (people-1)*300) {
 			sum = 0;
-			t2 = parseInt(Date().getTime());console.log(t1+'and'+t2+'and'+(t2-t1));
+			t2 = date();console.log(t1+'and'+t2+'and'+(t2-t1));
 			var speed = t2-t1;
 			if(speed>2000) speed = 2000;
 			else if(speed<500) speed = 500;
