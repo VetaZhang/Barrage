@@ -43,8 +43,8 @@ function handler() {
 
 if (window.DeviceMotionEvent) {
 	window.addEventListener('devicemotion',deviceMotionHandler, false);
-	var loop = setInterval(handler, 300);
-	document.getElementById('debug0').innerHTML = 'loop';
+	var loop = setInterval("handler()", 300);
+	document.getElementById('debug0').innerHTML = loop;
 }
 else {
 	debug.innerHTML = '您的手机不支持加速度感应额～';
