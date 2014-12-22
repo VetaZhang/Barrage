@@ -2,6 +2,14 @@
 $(document).ready(function() {
 	socket = io.connect("/shake");
 
+	socket.on('connect', function(data) {
+		$('#connect').html('connect');
+	});
+
+	socket.on('disconnect', function(data) {
+		$('#connect').html('disconnect');
+	});
+
 	var current = { x: null, y: null, z: null };
 	var bound = 5;
 	var debug = $('#debug');
@@ -34,7 +42,6 @@ $(document).ready(function() {
 			handler();
 		}
 		else {
-			debug0.html('power: < ' + bound);
 			$('div[id^="img"]').css('display', 'none');
 			$('#img_1').css('display', 'inline');
 		}
