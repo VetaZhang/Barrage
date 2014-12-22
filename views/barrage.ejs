@@ -1,19 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>barrage</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1"/>
-    <link rel="stylesheet" type="text/css" href="stylesheets/ionic.min.css"/>
-    <link rel="stylesheet" type="text/css" href="stylesheets/barrage.css"/>
+    <title>BiuBiu</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <link rel='stylesheet' href='/stylesheets/barrage.css' />
+    <link rel='stylesheet' href='/stylesheets/ionic.min.css' />
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/ionic.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/javascripts/barrage.js"></script>
   </head>
-  <body>
-    <h4 id="h_1"></h4>
-    <h4 id="h_2"></h4>
-    <h4 id="h_3"></h4>
-  </body>
 
-<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="javascripts/ionic.min.js"></script>
-<script type="text/javascript" src="javascripts/barrage.js"></script>
+  <body>
+    <div id="screen"></div>
+
+    <div id="info">
+      <span style="max-width:60%;overflow:hidden;">软件嘉年华</span>
+      <span id="member" style="float:right;">---&nbsp;&nbsp;</span>
+    </div>
+
+    <div class="item item-input-inset" style="padding:5px;">
+      <div class="button button-small button-light" id="color-select"></div>
+      <label class="item-input-wrapper">
+        <input id="barrage" type="text" placeholder="喷射毁灭一切的白光吧">
+      </label>
+      <button class="button button-small button-clear" id="biu">Biu~</button>
+    </div>
+
+    <div id="list"></div>
+
+    <div id="color-board" style="display:none;">
+      <div id="color-item-1" style="background-color:#eee;"></div>
+      <div id="color-item-2" style="background-color:#eeee00;"></div>
+      <div id="color-item-3" style="background-color:#00aa00;"></div>
+      <div id="color-item-4" style="background-color:#ff5511;"></div>
+      <div id="color-item-5" style="background-color:#ff44aa;"></div>
+      <div id="color-item-6" style="background-color:#0066ff;"></div>
+      <div id="color-item-7" style="background-color:#000;"></div>
+    </div>
+  </body>
 </html>

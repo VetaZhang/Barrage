@@ -1,0 +1,42 @@
+
+#screen {
+	width: 100%;
+	color: #fff5ee;
+	background-color: #444;
+}
+
+#info {
+	width: 100%;
+	padding: 2px 5px 2px 5px;
+	color: #fff0f5;
+	background-color: #333;
+}
+
+#list {
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+#color-select {
+	float: right;
+	width: 15px;
+	margin-right: 10px;
+	border-radius     : 5px;
+	-moz-border-radius: 5px;
+}
+
+#color-board {
+	z-index: 10;
+	position: fixed;
+	left: 0;
+	width: 100%;
+	padding: 5px 10px 5px 10px;
+}
+
+div[id^="color-item"] {
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	border-radius     : 15px;
+	-moz-border-radius: 15px;
+}

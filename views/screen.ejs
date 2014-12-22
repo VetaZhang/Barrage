@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BiuBiu</title>
+    <meta charset="utf-8"/>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+
+  <body style="background-color:#555;">
+    
+  </body>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      socket = io.connect("/screen");
+
+      socket.on('connect', function () {
+          console.log('connect');
+      });
+
+      socket.on('disconnect', function () {
+          console.log('disconnect');
+      });
+
+      var number = 0;
+      var win_width = $(window).width();
+      var win_height = $(window).height();
+
+      socket.on('bar', function (data) {
+        var top = parseInt((win_height-50)*(data.top/100));
+        var id = 'id_'+(++number);
+        
+        var bar = '<span id="'+id+
+          '" style="z-index:5;pointer-events:none;'+
+          'position:fixed;white-space:nowrap;'+
+          'font-family:Arial,Helvetica,sans-serif;'+
+          'left:'+win_width+'px;'+
+          'top:'+top+'px;'+
+          'color:'+data.color+';'+
+          'font-size:40px;'+
+          'font-weight:bold;'+
+          '">'+data.barrage+'</span>';
+                  
+        $('body').append(bar);
+        bar = $('#'+id);
+        var speed = parseInt(10000-bar.width()*10);
+        if(speed<2000)speed = 2000;
+
+        bar.animate({
+            left:-bar.width()
+        },
+        speed,
+        'linear',
+        function() {
+            $(this).remove();
+        });
+      });
+    });
+  </script>
+</html>

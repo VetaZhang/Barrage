@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-	socket = io.connect("/");
+	socket = io.connect("/shake");
 
 	var current = { x: null, y: null, z: null };
 	var bound = 5;
