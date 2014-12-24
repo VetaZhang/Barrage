@@ -11,28 +11,27 @@ $(document).ready(function(){
 	socket = io.connect("/biu");
 
 	socket.on('connect', function () {
-    console.log('connect');
+    $('#connect').html('已连接')
   });
 
   socket.on('disconnect', function () {
-    console.log('disconnect');
+    $('#connect').html('连接断开')
   });
 
   socket.on('give', function(data) {
-		$('#member').html('当前:'+data+'人');
+		$('#member').html('当前: '+data+'人');
 	});
 
 	setInterval('socket.emit("get")', 2000);
 
   socket.on('bar', function (data) {
-    $("#list").prepend('<li class="item" style="">'+data.barrage+"</li>");
-
-    var top = parseInt((height-15)*(data.top/100));
     var id = 'id_'+(++number);
+    var top = parseInt((height-15)*(data.top/100));
+    $("#list").append('<li class="item">'+data.barrage+"</li>");
     
     var bar = '<span id="'+id+
     	'" style="z-index:5;pointer-events:none;'+
-      'position:fixed;white-space:nowrap;'+
+      'position:absolute;white-space:nowrap;'+
       'font-family:Arial,Helvetica,sans-serif;'+
       'left:'+width+'px;'+
       'top:'+top+'px;'+
@@ -65,7 +64,7 @@ $(document).ready(function(){
         return;
     }
     var top = parseInt(Math.random()*100);
-    var color = $('#color-select').css('background-color');
+    var color = $('#biu').css('color');
 		socket.emit('bar',{top:top,color:color,barrage:barrage});
 		$('#barrage').val('');
 	});
@@ -91,7 +90,7 @@ $(document).ready(function(){
   $('div[id^="color-item"]').click(function() {
     $('#color-board').css('display', 'none');
     show = false;
-    $('#color-select').css('background-color',$(this).css('background-color'));
+    $('#biu').css('color',$(this).css('background-color'));
   });
 
 });

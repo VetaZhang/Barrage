@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html manifest="demo.appcache">
   <head>
     <title>BiuBiu</title>
     <meta charset="utf-8"/>
@@ -16,18 +16,18 @@
 
     <div id="info">
       <span style="max-width:60%;overflow:hidden;">软件嘉年华</span>
-      <a href="/" style="margin:0 0 0 5%;color:#888;">返回</a>
-      <span id="member" style="float:right;">---&nbsp;&nbsp;</span>
+      <span id="connect" style="margin:0 0 0 5%;color:#ccc;"></span>
+      <span id="member" style="float:right;">当前: --&nbsp;&nbsp;&nbsp;</span>
     </div>
 
     <div id="list"></div>
 
     <div class="item item-input-inset" id="input"  style="padding:5px;">
-      <div class="button button-small button-light" id="color-select"></div>
+      <img id="color-select" width="30px" height="30px" src="images/photo.png"></img>
       <label class="item-input-wrapper">
         <input id="barrage" type="text" placeholder="喷射毁灭一切的白光吧">
       </label>
-      <button class="button button-small button-clear" id="biu">Biu~</button>
+      <button class="button button-small button-dark" id="biu">Biu ~</button>
     </div>
 
     <div id="color-board" style="display:none;">

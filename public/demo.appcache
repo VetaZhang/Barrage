@@ -1,0 +1,21 @@
+CACHE MANIFEST
+#12-24-22:24
+
+/bower_components/jquery/dist/jquery.min.js
+/bower_components/jquery/dist/jquery.min.map
+
+/javascripts/barrage.js
+/javascripts/shake.js
+
+/stylesheets/ionic.min.css
+/stylesheets/barrage.css
+/stylesheets/shake.css
+
+/images/lv_1.png
+/images/lv_2.png
+/images/lv_3.png
+/images/lv_4.png
+/images/photo.png
+
+NETWORK:
+/socket.io/
