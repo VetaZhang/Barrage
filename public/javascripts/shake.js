@@ -12,12 +12,14 @@ $(document).ready(function() {
 
 	var current = { x: null, y: null, z: null };
 	var bound = 5;
+	var max = 0;
 	var debug = $('#debug');
 	var debug0 = $('#debug0');
 
 	function handler() {
 		var power = current.x + current.y + current.z;
-		debug0.html('power: '+power);
+		if(power>max) max = power;
+		debug0.html('MaxPower: '+max);
 		$('div[id^="img"]').css('display', 'none');
 		socket.emit('shake', power);
 		if(power<10) {

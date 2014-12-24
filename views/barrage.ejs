@@ -7,7 +7,6 @@
     <link rel='stylesheet' href='/stylesheets/barrage.css' />
     <link rel='stylesheet' href='/stylesheets/ionic.min.css' />
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/ionic.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="/javascripts/barrage.js"></script>
   </head>
@@ -17,10 +16,13 @@
 
     <div id="info">
       <span style="max-width:60%;overflow:hidden;">软件嘉年华</span>
+      <a href="/" style="margin:0 0 0 5%;color:#888;">返回</a>
       <span id="member" style="float:right;">---&nbsp;&nbsp;</span>
     </div>
 
-    <div class="item item-input-inset" style="padding:5px;">
+    <div id="list"></div>
+
+    <div class="item item-input-inset" id="input"  style="padding:5px;">
       <div class="button button-small button-light" id="color-select"></div>
       <label class="item-input-wrapper">
         <input id="barrage" type="text" placeholder="喷射毁灭一切的白光吧">
@@ -28,10 +30,8 @@
       <button class="button button-small button-clear" id="biu">Biu~</button>
     </div>
 
-    <div id="list"></div>
-
     <div id="color-board" style="display:none;">
-      <div id="color-item-1" style="background-color:#eee;"></div>
+      <div id="color-item-1" style="background-color:#fff;border:1px solid #ddd;"></div>
       <div id="color-item-2" style="background-color:#eeee00;"></div>
       <div id="color-item-3" style="background-color:#00aa00;"></div>
       <div id="color-item-4" style="background-color:#ff5511;"></div>

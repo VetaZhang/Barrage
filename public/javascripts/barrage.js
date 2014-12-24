@@ -4,7 +4,7 @@ $(document).ready(function(){
   var win_height = $(window).height();
   $('#screen').height(parseInt(win_height*0.35));
   $('#list').height(parseInt(win_height*0.65)-66);
-  $('#color-board').css('top', parseInt(win_height*0.35)+24-45);
+  $('#color-board').css('top', win_height-87);
   var width = $('#screen').width();
   var height = $('#screen').height();
 
@@ -24,7 +24,7 @@ $(document).ready(function(){
 
 	setInterval('socket.emit("get")', 2000);
 
-  socket.on('bar', function (data) {console.log(data.barrage);
+  socket.on('bar', function (data) {
     $("#list").prepend('<li class="item" style="">'+data.barrage+"</li>");
 
     var top = parseInt((height-15)*(data.top/100));

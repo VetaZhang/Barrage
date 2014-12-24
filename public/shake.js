@@ -2,10 +2,6 @@
 function start(callback) {
 	socket = io.connect("http://www.duanpengfei.com:3000/cj");
 
-	socket.on('connect', function() {
-		console.log('connect');
-	});
-
 	var sum = 0;
 	var people = 1;
 
