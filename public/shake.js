@@ -1,6 +1,6 @@
 
 function start(callback) {
-	socket = io.connect("http://www.flappyant.com:3000/cj");
+	socket = io.connect("http://www.duanpengfei.com:3000/cj");
 
 	var sum = 0;
 	var people = 1;
