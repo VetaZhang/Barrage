@@ -12,17 +12,22 @@
   </head>
 
   <body>
+    <div class="bar bar-header bar-dark" id="header">
+      <a class="button button-small button-stable button-clear" href="/"> 返回 </a>
+      <h1 class="title">软件嘉年华</h1>
+      <a class="button button-small button-stable button-clear" href="/shake"> 抽奖 </a>
+    </div>
+
     <div id="screen"></div>
 
     <div id="info">
-      <span style="max-width:60%;overflow:hidden;">软件嘉年华</span>
-      <span id="connect" style="margin:0 0 0 5%;color:#ccc;"></span>
+      <span id="connect" style="margin:0 0 0 3%;color:#ccc;"></span>
       <span id="member" style="float:right;">当前: --&nbsp;&nbsp;&nbsp;</span>
     </div>
 
     <div id="list"></div>
 
-    <div class="item item-input-inset" id="input"  style="padding:5px;">
+    <div class="item item-input-inset" id="input">
       <img id="color-select" width="30px" height="30px" src="images/photo.png"></img>
       <label class="item-input-wrapper">
         <input id="barrage" type="text" placeholder="喷射毁灭一切的白光吧">
@@ -30,13 +35,14 @@
       <button class="button button-small button-dark" id="biu">Biu ~</button>
     </div>
 
-    <div id="color-board" style="display:none;">
-      <div id="color-item-1" style="background-color:#fff;border:1px solid #ddd;"></div>
+    <div id="color-board">
+      <div id="color-item-1" style="background-color:#fff;"></div>
       <div id="color-item-2" style="background-color:#eeee00;"></div>
       <div id="color-item-3" style="background-color:#00aa00;"></div>
       <div id="color-item-4" style="background-color:#ff5511;"></div>
       <div id="color-item-5" style="background-color:#ff44aa;"></div>
       <div id="color-item-6" style="background-color:#0066ff;"></div>
+      <div id="color-item-7" style="background-color:#222;"></div>
       <div id="color-item-7" style="background-color:#000;"></div>
     </div>
   </body>

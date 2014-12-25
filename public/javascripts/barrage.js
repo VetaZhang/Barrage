@@ -3,8 +3,7 @@ $(document).ready(function(){
   var win_width = $(window).width();
   var win_height = $(window).height();
   $('#screen').height(parseInt(win_height*0.35));
-  $('#list').height(parseInt(win_height*0.65)-66);
-  $('#color-board').css('top', win_height-87);
+  $('#list').height(parseInt(win_height*0.65)-106);
   var width = $('#screen').width();
   var height = $('#screen').height();
 
@@ -39,7 +38,7 @@ $(document).ready(function(){
       'font-size:14px;'+
       'font-weight:bold;'+
       '">'+data.barrage+'</span>';
-              
+
     $('#screen').append(bar);
     bar = $('#'+id);
     var speed = parseInt(10000-bar.width()*30);
@@ -60,7 +59,7 @@ $(document).ready(function(){
 
     if(barrage == '')return;
     if(barrage.length>256) {
-        $("#biu").after('<p style="margin:10px;">弹幕过长,发送失败～(￣▽￣")</p>');
+        $("#biu").after('<p style="margin:10px;">弹幕过长,发送失败～(￣▽￣")~</p>');
         return;
     }
     var top = parseInt(Math.random()*100);
@@ -78,18 +77,33 @@ $(document).ready(function(){
   var show = false;
   $('#color-select').click(function() {
     if(show) {
-      $('#color-board').css('display', 'none');
-      show = false;
+      $('#color-board').animate({
+        bottom: '0',
+        opacity: '0'
+      },250,
+      function() {
+        show = false;
+      });
     }
     else {
-      $('#color-board').css('display', 'inline');
-      show = true;
+      $('#color-board').animate({
+        bottom: '45px',
+        opacity: '1'
+      },250,
+      function() {
+        show = true;
+      });
     }
   });
 
   $('div[id^="color-item"]').click(function() {
-    $('#color-board').css('display', 'none');
-    show = false;
+    $('#color-board').animate({
+      bottom: '0',
+      opacity: '0'
+    },250,
+    function() {
+      show = false;
+    });
     $('#biu').css('color',$(this).css('background-color'));
   });
 
