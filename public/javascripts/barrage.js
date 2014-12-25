@@ -7,14 +7,14 @@ $(document).ready(function(){
   var width = $('#screen').width();
   var height = $('#screen').height();
 
-	socket = io.connect("/biu");
+	socket = io.connect("/client");
 
 	socket.on('connect', function () {
-    $('#connect').html('已连接')
+    $('#connect').html('已连接');
   });
 
   socket.on('disconnect', function () {
-    $('#connect').html('连接断开')
+    $('#connect').html('连接断开');
   });
 
   socket.on('give', function(data) {
@@ -106,5 +106,75 @@ $(document).ready(function(){
     });
     $('#biu').css('color',$(this).css('background-color'));
   });
+
+  $('.toggleShake').click(function() {
+    if($('#shake').css('display')=='none') {
+      $('#shake').css('display', 'inline');
+      $('#shake').animate({
+        top: '40px',
+        opacity: '1'
+      },250,
+      function() {
+        //
+      });
+    }
+    else {
+      $('#shake').animate({
+        top: '0',
+        opacity: '0'
+      },250,
+      function() {
+        $('#shake').css('display', 'none');
+      });
+    }
+  });
+
+  //shake
+
+  var current = { x: null, y: null, z: null };
+  var bound = 5;
+  var max = 0;
+  var xyz = $('#xyz');
+  var mp = $('#mp');
+
+  function handler() {
+    var power = current.x + current.y + current.z;
+    if(power>max) max = power;
+    mp.html('MaxPower: '+max);
+    $('div[id^="img"]').css('display', 'none');
+    socket.emit('shake', power);
+    if(power<10) {
+      $('#img_1').css('display', 'inline');
+    }else if(power<20) {
+      $('#img_2').css('display', 'inline');
+    }else if(power<30) {
+      $('#img_3').css('display', 'inline');
+    }else {
+      $('#img_4').css('display', 'inline');
+    }
+  }
+
+  function deviceMotionHandler(eventData) {
+    var acceleration = eventData.acceleration;
+    current.x = Math.abs(Math.round(acceleration.x));
+    current.y = Math.abs(Math.round(acceleration.y));
+    current.z = Math.abs(Math.round(acceleration.z));
+    xyz.html('x:' + current.x + ' y:' + current.y + ' z:' + current.z);
+
+    if(current.x>bound || current.y>bound || current.z>bound) {
+      handler();
+    }
+    else {
+      $('div[id^="img"]').css('display', 'none');
+      $('#img_1').css('display', 'inline');
+    }
+  }
+
+  if (window.DeviceMotionEvent) {
+    window.addEventListener('devicemotion',deviceMotionHandler, false);
+  }
+  else {
+    debug.innerHTML = '您的手机不支持加速度感应额～';
+  }
 
 });

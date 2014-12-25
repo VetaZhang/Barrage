@@ -1,10 +1,20 @@
-body {
-	padding: 50px;
-	 background-color:#333;
+
+#shake {
+	z-index: 20;
+	position: fixed;
+	top: 0;
+	left: 10%;
+	width: 80%;
+	display: none;
+	opacity: 0;
+	padding: 10px;
+	background-color: #333;
 }
 
 #title {
 	color: #eee;
+	width: 100%;
+	text-align: center;
 }
 
 p {
@@ -17,9 +27,9 @@ div[id^="img"] {
 	display: none;
 }
 
-img {
+div[id^="img"] > img {
 	width: 100%;
-	height: auto;
+	height: 300px;
 }
 
 #img_1 {

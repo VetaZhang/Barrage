@@ -14,12 +14,12 @@ router.get('/barrage', function(req, res) {
   res.render('barrage');
 });
 
-router.get('/shake', function(req, res) {
+/*router.get('/shake', function(req, res) {
   res.render('shake');
-});
+});*/
 
-router.get('/test', function(req, res) {
+/*router.get('/test', function(req, res) {
   res.render('test');
-});
+});*/
 
 module.exports = router;

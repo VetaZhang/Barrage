@@ -4,10 +4,7 @@ var func = require('./func.js');
 module.exports = function(server) {
 	var io = require('socket.io');
 	var io = io.listen(server);
-	var people = {
-		biu: 0,
-		shake: 0
-	};
+	var people = 0;
 
 	io.of('/screen').on('connection', function (socket) {
 		socket.on('disconnect', function() {
@@ -21,11 +18,33 @@ module.exports = function(server) {
 		});
 
 		socket.on('get', function() {
-			socket.emit('give', people.shake);
+			socket.emit('give', people);
 		});
 	});
 
-	io.of('/biu').on('connection', function (socket) {
+	io.of('/client').on('connection', function (socket) {
+		people++;
+		socket.on('disconnect', function() {
+			people--;
+			if(people<=0)people = 0;
+		});
+
+		socket.on('bar', function(data) {
+			data.barrage = func.protect(data.barrage);
+			io.of('/client').emit('bar', data);
+			io.of('/screen').emit('bar', data);
+		});
+
+		socket.on('shake', function(data) {
+			io.of('/cj').emit('shake', data);
+		});
+
+		socket.on('get', function() {
+			socket.emit('give', people);
+		});
+	});
+
+	/*io.of('/biu').on('connection', function (socket) {
 		people.biu++;
 		socket.on('disconnect', function() {
 			people.biu--;
@@ -53,5 +72,5 @@ module.exports = function(server) {
 		socket.on('shake', function(data) {
 			io.of('/cj').emit('shake', data);
 		});
-	});
+	});*/
 };
