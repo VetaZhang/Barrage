@@ -3,11 +3,12 @@
 	position: relative !important;
 	width: 100%;
 	height: 40px !important;
-	background-color: #444 !important;
+	background-color: #333 !important;
 	box-shadow: 0 0 0 black,
 						  0 0 0 black,
 						  0 2px 5px #333,
 						  0 0 0 black;
+	border-color: #223 !important;
 }
 
 #screen {
