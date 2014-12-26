@@ -21,11 +21,6 @@
 	color: #eee;
 }
 
-div[id^="img"] {
-	width: 100%;
-	display: none;
-}
-
 img[id^="img"]{
 	display: none;
 }

@@ -168,7 +168,7 @@ $(document).ready(function(){
       handler();
     }
     else {
-      $('div[id^="img"]').css('display', 'none');
+      $('img[id^="img"]').css('display', 'none');
       $('#img_1').css('display', 'inline');
     }
   }
