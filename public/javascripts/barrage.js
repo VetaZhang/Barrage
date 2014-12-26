@@ -2,8 +2,11 @@ $(document).ready(function(){
   var number = 0;
   var win_width = $(window).width();
   var win_height = $(window).height();
+  var topic = parseInt(win_height*0.15);
   $('#screen').height(parseInt(win_height*0.35));
   $('#list').height(parseInt(win_height*0.65)-106);
+  $('img[id^="img"]').width(parseInt(win_width*0.6));
+  $('img[id^="img"]').height(parseInt(win_height*0.4));
   var width = $('#screen').width();
   var height = $('#screen').height();
 
@@ -111,7 +114,7 @@ $(document).ready(function(){
     if($('#shake').css('display')=='none') {
       $('#shake').css('display', 'inline');
       $('#shake').animate({
-        top: '40px',
+        top: topic,
         opacity: '1'
       },250,
       function() {
@@ -141,7 +144,7 @@ $(document).ready(function(){
     var power = current.x + current.y + current.z;
     if(power>max) max = power;
     mp.html('MaxPower: '+max);
-    $('div[id^="img"]').css('display', 'none');
+    $('img[id^="img"]').css('display', 'none');
     socket.emit('shake', power);
     if(power<10) {
       $('#img_1').css('display', 'inline');

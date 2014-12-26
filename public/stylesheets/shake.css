@@ -7,7 +7,7 @@
 	width: 80%;
 	display: none;
 	opacity: 0;
-	padding: 10px;
+	padding: 10px 10% 20px 10%;
 	background-color: #333;
 }
 
@@ -17,19 +17,17 @@
 	text-align: center;
 }
 
-p {
+.debug {
 	color: #eee;
 }
 
 div[id^="img"] {
 	width: 100%;
-	height: 350px;
 	display: none;
 }
 
-div[id^="img"] > img {
-	width: 100%;
-	height: 300px;
+img[id^="img"]{
+	display: none;
 }
 
 #img_1 {
