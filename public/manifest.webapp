@@ -5,7 +5,7 @@
         "url": ""
     },
     "icons": {
-        "128": "http://www.duanpengfei.com:3000/images/icon.png"
+        "128": "http://www.flappyant.com:3000/images/icon.png"
     },
-    "launch_url": "http://www.duanpengfei.com:3000/barrage"
+    "launch_url": "http://www.flappyant.com:3000/barrage"
 }
