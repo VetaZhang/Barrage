@@ -62,7 +62,7 @@ $(document).ready(function(){
 
     if(barrage == '')return;
     if(barrage.length>256) {
-        $("#biu").after('<p style="margin:10px;">弹幕过长,发送失败～(￣▽￣")~</p>');
+        $("#list").append('<li class="item">弹幕过长,发送失败～(￣▽￣")~</li>');
         return;
     }
     var top = parseInt(Math.random()*100);
