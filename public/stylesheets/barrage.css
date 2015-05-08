@@ -1,3 +1,13 @@
+body {
+	padding: 0;
+	background-color: #eee;
+}
+
+.box {
+	width: 100%;
+	max-width: 400px;
+	margin: auto;
+}
 
 #header {
 	position: relative !important;
@@ -16,6 +26,7 @@
 	width: 100%;
 	color: #fff5ee;
 	background-color: #444;
+	overflow: hidden;
 }
 
 #info {
@@ -27,6 +38,7 @@
 }
 
 #list {
+	background-color: #fff;
 	overflow-y: auto;
 	overflow-x: hidden;
 }
@@ -42,6 +54,7 @@ li {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
+	max-width: 400px;
 	height: 42px !important;
 	padding: 5px;
 	margin: 0 !important;
@@ -63,6 +76,7 @@ li {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
+	max-width: 400px;
 	height: 45px !important;
 	padding: 7px 10px 7px 10px;
 	border-radius     : 5px;

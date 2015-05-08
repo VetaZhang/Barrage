@@ -12,7 +12,7 @@ module.exports = function(server) {
 		});
 	});
 
-	io.of('/cj').on('connection', function (socket) {
+	/*io.of('/cj').on('connection', function (socket) {
 		socket.on('disconnect', function() {
 			//
 		});
@@ -20,7 +20,7 @@ module.exports = function(server) {
 		socket.on('get', function() {
 			socket.emit('give', people);
 		});
-	});
+	});*/
 
 	io.of('/client').on('connection', function (socket) {
 		people++;
@@ -35,9 +35,9 @@ module.exports = function(server) {
 			io.of('/screen').emit('bar', data);
 		});
 
-		socket.on('shake', function(data) {
+		/*socket.on('shake', function(data) {
 			io.of('/cj').emit('shake', data);
-		});
+		});*/
 
 		socket.on('get', function() {
 			socket.emit('give', people);

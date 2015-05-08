@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Input</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <link rel='stylesheet' href='/stylesheets/ionic.min.css' />
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  </head>
+
+  <body style="padding-top:25vh;">
+    <div class="list" style="max-width:400px;margin:auto;">
+      <p id="tip" style="height:20px;opacity:0;color:#aaa;text-align:center;"></p>
+      <label class="item item-input" style="border:none;border-bottom:solid 1px #ccc;">
+        <input type="text" id="id" placeholder="添加您的学号可以参与抽奖呦！">
+      </label>
+      <button class="button button-block button-positive" id="submit" style="margin-top:30px;">添加</button>
+    </div>
+  </body>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      showTip = function(msg) {
+        $('#tip').html(msg);
+        $('#tip').animate({
+          opacity: '1'
+        },300,function() {
+          $(this).animate({
+            opacity: '1'
+          },1000,function() {
+            $(this).animate({
+              opacity: '0'
+            },300);
+          });
+        });
+      };
+
+      $('#submit').click(function(event) {
+        var id = $('#id').val();
+        if(id && !isNaN(id) && id.length==8) {
+          $.post(
+            '/addId',
+            {
+              id: id
+            },
+            function(data) {
+            if(data.status) showTip('添加成功');
+            else showTip(data.msg);
+          }).error(function() {
+            showTip('网络错误');
+          });
+        }else {
+          showTip('学号格式怪怪的 + _ +');
+        }
+      });
+
+      $(document).keypress(function(e) {
+        if(e.which == 13) {
+          $('#submit').click();
+        }
+      });
+    });
+  </script>
+</html>

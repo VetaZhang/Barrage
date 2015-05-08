@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lottery</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <link rel='stylesheet' href='/stylesheets/ionic.min.css' />
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  </head>
+
+  <body style="padding-top:25vh;">
+    <h1 id="id" style="text-align:center;font-size:100px;margin-bottom:50px;">00000000</h1>
+    <button class="button button-block button-positive" id="start" style="position:relative;top:50px;opacity:0;max-width:400px;margin:auto;">开始</button>
+    <p id="msg" style="position:fixed;bottom:0;text-align:center;width:100vw;"></p>
+  </body>
+  <script type="text/javascript">
+    $.get('/getId',function(data) {
+      list = data.list;
+      $('#msg').html('参与抽奖人数: '+list.length);
+      $('#start').animate({
+        top: '0',
+        opacity: '1'
+      },300);
+    });
+    $(document).ready(function(){
+      var start = false;
+      $('#start').click(function(event) {
+        if(!list[0]) return;
+        if(!start) {
+          start = true;
+          $(this).removeClass('button-positive');
+          $(this).addClass('button-assertive');
+          $(this).html('停止');
+          loop = setInterval(function() {
+            var i = parseInt(Math.random()*list.length);
+            $('#id').html(list[i]);
+          },50);
+        }else {
+          start = false;
+          $(this).removeClass('button-assertive');
+          $(this).addClass('button-positive');
+          $(this).html('开始');
+          clearInterval(loop);
+        }
+      });
+    });
+  </script>
+</html>
